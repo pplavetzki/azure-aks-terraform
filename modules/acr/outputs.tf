@@ -13,7 +13,12 @@ output "acr_login_server" {
   value       = azurerm_container_registry.acr.login_server
 }
 
-output "resource_group_name" {
-  description = "Name of the resource group"
-  value       = azurerm_resource_group.acr.name
+output "identity_principal_id" {
+  description = "Principal ID of the ACR managed identity"
+  value       = azurerm_user_assigned_identity.acr.principal_id
+}
+
+output "identity_id" {
+  description = "ID of the ACR managed identity"
+  value       = azurerm_user_assigned_identity.acr.id
 }
