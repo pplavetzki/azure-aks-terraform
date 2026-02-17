@@ -16,8 +16,8 @@ variable "acr_name" {
 variable "sku" {
   description = "SKU tier for ACR"
   type        = string
-  default     = "Basic"
-  
+  default     = "Premium"
+
   validation {
     condition     = contains(["Basic", "Standard", "Premium"], var.sku)
     error_message = "SKU must be Basic, Standard, or Premium."
@@ -28,6 +28,23 @@ variable "admin_enabled" {
   description = "Enable admin user for ACR"
   type        = bool
   default     = false
+}
+
+variable "default_network_action" {
+  description = "Default network action for ACR (Allow or Deny)"
+  type        = string
+  default     = "Deny"
+
+  validation {
+    condition     = contains(["Allow", "Deny"], var.default_network_action)
+    error_message = "Must be Allow or Deny."
+  }
+}
+
+variable "allowed_ip_ranges" {
+  description = "List of allowed IP addresses/CIDR ranges for ACR access"
+  type        = list(string)
+  default     = []
 }
 
 variable "tags" {
