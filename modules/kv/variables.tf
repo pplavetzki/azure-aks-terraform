@@ -39,7 +39,7 @@ variable "purge_protection_enabled" {
 variable "default_network_action" {
   description = "Default network action for Key Vault"
   type        = string
-  default     = "Allow"
+  default     = "Deny"  # <-- CHANGED FROM "Allow"
   
   validation {
     condition     = contains(["Allow", "Deny"], var.default_network_action)
@@ -47,8 +47,26 @@ variable "default_network_action" {
   }
 }
 
+variable "allowed_ip_ranges" {  # <-- NEW VARIABLE
+  description = "List of allowed IP addresses/CIDR ranges for Key Vault access"
+  type        = list(string)
+  default     = []
+}
+
 variable "tags" {
   description = "Tags to apply to resources"
   type        = map(string)
   default     = {}
+}
+
+variable "secrets" {
+  description = "Map of secrets to create in Key Vault"
+  type        = map(string)
+  default     = {}
+}
+
+variable "rbac_authorization_enabled" {
+  type      = bool
+  default   = true
+  description = "Enable RBAC authorization for Key Vault (true/false)"
 }
