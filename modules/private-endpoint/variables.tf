@@ -33,3 +33,18 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "create_dns_zone" {
+  type    = bool
+  default = false
+}
+
+variable "private_dns_zone_name" {
+  type    = string
+  default = ""
+}
+
+variable "virtual_network_id" {
+  type    = string
+  default = ""
+}
