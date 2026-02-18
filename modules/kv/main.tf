@@ -21,6 +21,7 @@ resource "azurerm_key_vault" "kv" {
     bypass         = "AzureServices"
     default_action = var.default_network_action
     ip_rules       = var.allowed_ip_ranges  # <-- ADDED THIS LINE
+    virtual_network_subnet_ids = var.allowed_subnet_ids
   }
 
   tags = var.tags

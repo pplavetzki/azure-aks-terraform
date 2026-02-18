@@ -23,6 +23,7 @@ variable "subnets" {
   description = "Map of subnets to create"
   type = map(object({
     address_prefix = string
+    service_endpoints = optional(list(string), [])
     delegation = optional(object({
       name         = string
       service_name = string
@@ -37,3 +38,4 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+

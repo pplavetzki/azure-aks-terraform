@@ -70,3 +70,9 @@ variable "rbac_authorization_enabled" {
   default   = true
   description = "Enable RBAC authorization for Key Vault (true/false)"
 }
+
+variable "allowed_subnet_ids" {
+  description = "List of subnet IDs allowed to access Key Vault"
+  type        = list(string)
+  default     = []
+}

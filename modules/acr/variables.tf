@@ -47,8 +47,34 @@ variable "allowed_ip_ranges" {
   default     = []
 }
 
+variable "allowed_subnet_ids" {
+  type    = list(string)
+  default = []
+}
+
+variable "public_network_access_enabled" {
+  description = "Enable public network access for ACR"
+  type        = bool
+  default     = false
+}
+
 variable "tags" {
   description = "Tags to apply to resources"
   type        = map(string)
   default     = {}
+}
+
+variable "create_dns_zone" {
+  type    = bool
+  default = false
+}
+
+variable "private_dns_zone_name" {
+  type    = string
+  default = ""
+}
+
+variable "virtual_network_id" {
+  type    = string
+  default = ""
 }
