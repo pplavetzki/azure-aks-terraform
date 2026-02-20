@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.14.0"
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "= 4.61.0"
+    }
+  }
+}
+
 resource "azurerm_private_dns_zone" "this" {
   count               = var.create_dns_zone ? 1 : 0
   name                = var.private_dns_zone_name

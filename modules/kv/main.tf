@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.14.0"
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "= 4.61.0"
+    }
+  }
+}
+
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_user_assigned_identity" "kv" {
